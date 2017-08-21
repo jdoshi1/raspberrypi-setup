@@ -7,16 +7,16 @@ Table of Contents
 =================
 
 * [raspberrypi\-setup](#raspberrypi-setup)
-  * [Faster login to your raspberry pi machine](#faster-login-to-your-raspberry-pi-machine)
+  * [Passwordless login to your raspberry pi machine](#passwordless-login-to-your-raspberry-pi-machine)
 
-## Faster login to your raspberry pi machine
+## Passwordless login to your raspberry pi machine
 *login to raspberrypi without password*
 
 1. create a ssh-key
 ```bash
 ssh-keygen -t rsa -C "your_email@example.com"
 ```
-  - Just press <Enter> to accept the default location and file name. If the .ssh directory doesn't exist, the system creates one for you.
+  - Just press \<Enter\> to accept the default location and file name. If the .ssh directory doesn't exist, the system creates one for you.
   - Enter, and re-enter, a passphrase when prompted (You can keep it blank if you are lazy like I am)
   - Your ssh public-private key pair will be generated here --> ```ls -al ~/.ssh/id_rsa```
 
@@ -24,6 +24,7 @@ ssh-keygen -t rsa -C "your_email@example.com"
 ```bash
 pbcopy < ~/.ssh/id_rsa.pub # Make sure the public key file is correct
 ssh pi@raspberrypi.local # This is the only time you will need to enter the password
-echo "paste_your_key_surrounded_by_these_quotes" >> ~/.ssh/authorized_keys
+echo "paste_your_copied_public_key_surrounded_by_these_quotes" >> ~/.ssh/authorized_keys
 ```
-  - Now logout and login to see you dont need a password
+  - Now you can login without a password
+
